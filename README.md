@@ -1,6 +1,15 @@
 ### What
 Local development DNS server that replies "127.0.0.1" to all type A queries, and NXDOMAIN to any other query.
 
+### Why
+It's often useful during development to access local services using a local domain. Existing options are:
+
+1. Add them all to `/etc/hosts` (quickly becomes a mess, have to list all subdomains)
+2. Run a DNS server like BIND (complex configuration)
+3. Run a DNS proxy like [Dnsmasq](http://passingcuriosity.com/2013/dnsmasq-dev-osx/) (reasonable option but still needs configuration)
+
+Using devdns you just need to download a binary and run it. It works best with the OS X `resolver` system (see below).
+
 ### How
 
 Build and then run `./devdns`. By default it listens on `127.0.0.1:5300` (UDP), you can specify an alternative address as follows: `./devdns -addr="127.0.0.1:6300"`.

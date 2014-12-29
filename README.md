@@ -1,5 +1,5 @@
 ### What
-Local development DNS server that replies "127.0.0.1" to all type A queries, and NXDOMAIN to any other query.
+DNS server that replies the same address ("127.0.0.1" by default) to all type A queries and NXDOMAIN to any other query.
 
 ### Why
 It's often useful during development to access local services using a local domain. Existing options are:
@@ -29,6 +29,10 @@ Contents of /etc/resolver/dev:
 nameserver 127.0.0.1
 port 5300
 ```
+
+If you want to change the resolved address from the `127.0.0.1` default to another (virtual) machine you can change it as follows: `./devdns -ip="192.168.55.5"`. 
+
+Should you need to specify different resolved addresses for different host names you can run multiple instances of devdns on different listening addresses and change the `/etc/resolver` config accordingly. However at that point it might be easier to use Dnsmasq.
 
 ### Building
 
